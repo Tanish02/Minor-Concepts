@@ -87,6 +87,68 @@
 //
 // Callbacks -->
 
+// function checkInventory(callback) {
+//   setTimeout(() => {
+//     console.log("Checking Inventory --->");
+//     callback();
+//   }, 1000);
+// }
+
+// function createOrder(callback) {
+//   setTimeout(() => {
+//     console.log("Creating Order --->");
+//     callback();
+//   }, 3000);
+// }
+
+// function chargePayment(callback) {
+//   setTimeout(() => {
+//     console.log("Charging Payment--->");
+//     callback();
+//   }, 5000);
+// }
+
+// function sendInvoice(callback) {
+//   setTimeout(() => {
+//     console.log("Sending Invoice --->");
+//     callback();
+//   }, 2000);
+// }
+
+// function main() {
+//   checkInventory(() => {
+//     createOrder(() => {
+//       chargePayment(() => {
+//         sendInvoice(() => {
+//           console.log("Order request completed--->");
+//         });
+//       });
+//     });
+//   });
+//   // createOrder();
+//   // chargePayment();
+//   // sendInvoice();
+//   console.log("other request processing...");
+// }
+// main();
+
+// here we are passing functions as arguments to other functions
+// its helps to maintain the order of execution
+// this is called callback functions
+// but this approach leads to callback hell
+// which is hard to read and maintain
+//
+/////
+////
+/////
+////
+///
+
+/// callback hell -->
+// callback hell is a situation where we have multiple nested callbacks
+// which makes the code hard to read and maintain
+// it looks like a pyramid of doom
+// to avoid callback hell we can use promises and async/await
 function checkInventory(callback) {
   setTimeout(() => {
     console.log("Checking Inventory --->");
@@ -116,6 +178,7 @@ function sendInvoice(callback) {
 }
 
 function main() {
+  // callback hell -- callbacks inside callbacks
   checkInventory(() => {
     createOrder(() => {
       chargePayment(() => {
@@ -125,21 +188,6 @@ function main() {
       });
     });
   });
-  // createOrder();
-  // chargePayment();
-  // sendInvoice();
   console.log("other request processing...");
 }
 main();
-
-// here we are passing functions as arguments to other functions
-// its helps to maintain the order of execution
-// this is called callback functions
-// but this approach leads to callback hell
-// which is hard to read and maintain
-//
-/////
-////
-/////
-////
-///
