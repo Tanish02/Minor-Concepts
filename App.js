@@ -87,35 +87,59 @@
 //
 // Callbacks -->
 
-function checkInventory() {
+function checkInventory(callback) {
   setTimeout(() => {
     console.log("Checking Inventory --->");
+    callback();
   }, 1000);
 }
 
-function createOrder() {
+function createOrder(callback) {
   setTimeout(() => {
     console.log("Creating Order --->");
-  }, 2000);
-}
-
-function chargePayment() {
-  setTimeout(() => {
-    console.log("Charging Payment--->");
+    callback();
   }, 3000);
 }
 
-function sendInvoice() {
+function chargePayment(callback) {
+  setTimeout(() => {
+    console.log("Charging Payment--->");
+    callback();
+  }, 5000);
+}
+
+function sendInvoice(callback) {
   setTimeout(() => {
     console.log("Sending Invoice --->");
-  }, 4000);
+    callback();
+  }, 2000);
 }
 
 function main() {
-  checkInventory();
-  createOrder();
-  chargePayment();
-  sendInvoice();
-  console.log("Order request processing--->");
+  checkInventory(() => {
+    createOrder(() => {
+      chargePayment(() => {
+        sendInvoice(() => {
+          console.log("Order request completed--->");
+        });
+      });
+    });
+  });
+  // createOrder();
+  // chargePayment();
+  // sendInvoice();
+  console.log("other request processing...");
 }
 main();
+
+// here we are passing functions as arguments to other functions
+// its helps to maintain the order of execution
+// this is called callback functions
+// but this approach leads to callback hell
+// which is hard to read and maintain
+//
+/////
+////
+/////
+////
+///
