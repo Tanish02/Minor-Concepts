@@ -159,14 +159,20 @@ function checkInventory(callback) {
 function createOrder(callback) {
   setTimeout(() => {
     console.log("Creating Order --->");
-    callback();
+    // error handling
+    // simulate an error
+    // and return because of the error appears here
+    const error = new Error("Order creation failed");
+    callback(error);
   }, 3000);
 }
 
 function chargePayment(callback) {
   setTimeout(() => {
     console.log("Charging Payment--->");
-    callback();
+    let error = null;
+    const chargedAmount = 100;
+    callback(error, chargedAmount);
   }, 5000);
 }
 
@@ -180,10 +186,19 @@ function sendInvoice(callback) {
 function main() {
   // callback hell -- callbacks inside callbacks
   checkInventory(() => {
-    createOrder(() => {
-      chargePayment(() => {
+    createOrder((error) => {
+      if (error) {
+        console.log(error);
+      }
+      chargePayment((err, chargedAmount) => {
+        if (err) {
+          console.log("handling payment error--->");
+          return;
+        }
+
+        console.log("charged:", chargedAmount);
         sendInvoice(() => {
-          console.log("Order request completed--->");
+          console.log("ALL DONE!");
         });
       });
     });
