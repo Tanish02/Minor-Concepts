@@ -42,6 +42,51 @@
 ////
 // Asynchronous code -->
 
+// function checkInventory() {
+//   setTimeout(() => {
+//     console.log("Checking Inventory --->");
+//   }, 1000);
+// }
+
+// function createOrder() {
+//   setTimeout(() => {
+//     console.log("Creating Order --->");
+//   }, 2000);
+// }
+
+// function chargePayment() {
+//   setTimeout(() => {
+//     console.log("Charging Payment--->");
+//   }, 3000);
+// }
+
+// function sendInvoice() {
+//   setTimeout(() => {
+//     console.log("Sending Invoice --->");
+//   }, 4000);
+// }
+
+// function main() {
+//   checkInventory();
+//   createOrder();
+//   chargePayment();
+//   sendInvoice();
+//   console.log("Order request processing--->");
+// }
+// main();
+
+// in async code the lines do not wait for each other
+// they get executed as and when they are ready
+// so the last line gets executed first
+// and the other lines get executed after their respective timeouts
+// this is called non-blocking code execution
+// this is also called multi-threaded JS
+//
+///
+///
+//
+// Callbacks -->
+
 function checkInventory() {
   setTimeout(() => {
     console.log("Checking Inventory --->");
@@ -74,14 +119,3 @@ function main() {
   console.log("Order request processing--->");
 }
 main();
-
-// in async code the lines do not wait for each other
-// they get executed as and when they are ready
-// so the last line gets executed first
-// and the other lines get executed after their respective timeouts
-// this is called non-blocking code execution
-// this is also called multi-threaded JS
-//
-///
-///
-//
