@@ -244,7 +244,8 @@ function createOrder(callback) {
       // and return because of the error appears here
       //const error = new Error("Order creation failed");
       // callback(error);
-      resolve();
+      // resolve();
+      reject(new Error("Order creation failed!"));
     }, 3000);
   });
 }
@@ -291,10 +292,20 @@ function main() {
   //     });
   //   });
   // });
-
+  //
+  // promise chaining / .catch chaing --> solution use async await
   checkInventory()
+    .catch((err) => {
+      console.log("err", err);
+    })
     .then(createOrder)
+    .catch((err) => {
+      console.log("err", err);
+    })
     .then(chargePayment)
+    .catch((err) => {
+      console.log("err", err);
+    })
     .then(sendInvoice)
     .catch((err) => {
       console.log("err", err);
