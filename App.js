@@ -327,8 +327,10 @@ function checkInventory(callback) {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("Checking Inventory...");
+      // passing Data
+      let inStock = 4;
       //reject(new Error("Inventory check failed!"));
-      resolve();
+      resolve(inStock);
     }, 2000);
   });
   return promise;
@@ -366,7 +368,8 @@ async function main() {
   setTimeout(() => {
     console.log("other request processing...");
   }, 3000);
-  await checkInventory();
+  const inStock = await checkInventory();
+  console.log("inStock:", inStock);
   await createOrder();
   await chargePayment();
   await sendInvoice();
@@ -377,3 +380,5 @@ main();
 // main benefit of async await is main thread is not blocked
 // so other code/function/process can execude freely because thread is free
 // await makes the function pause/wait until the promise is resolved
+// if Data is passed from the promise we do it through .resolve(data);
+//
