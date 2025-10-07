@@ -222,13 +222,14 @@
 //it used in cases when we dont know in advance when the response will come
 // it represents a value that may be available now, or in the future, or never
 // in promise we have two functions resolve and reject
+// promise have 3 state --> pending, resolve/fullfiled=execution ok, reject=error, .catch=for error handling
 function checkInventory(callback) {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("Checking Inventory...");
       // callback();
-      resolve(); // --> when everything goes well and we get the response
-      // reject(); //  --> when there is an error and we dont get the response
+      // resolve(); // --> when everything goes well and we get the response
+      reject(new Error("Inventory check failed!")); // --> when error popsup and we dont get the response
     }, 4000);
   });
   return promise;
@@ -291,7 +292,13 @@ function main() {
   //   });
   // });
 
-  checkInventory().then(createOrder).then(chargePayment).then(sendInvoice);
+  checkInventory()
+    .then(createOrder)
+    .then(chargePayment)
+    .then(sendInvoice)
+    .catch((err) => {
+      console.log("err", err);
+    });
 
   console.log("other request processing...");
 }
