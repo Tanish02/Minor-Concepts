@@ -249,19 +249,25 @@ function createOrder(callback) {
 }
 
 function chargePayment(callback) {
-  setTimeout(() => {
-    console.log("Charging Payment...");
-    let error = null;
-    const chargedAmount = 100;
-    callback(error, chargedAmount);
-  }, 5000);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Charging Payment...");
+      //let error = null;
+      //const chargedAmount = 100;
+      //callback(error, chargedAmount);
+      resolve();
+    }, 5000);
+  });
 }
 
 function sendInvoice(callback) {
-  setTimeout(() => {
-    console.log("Sending Invoice...");
-    callback();
-  }, 2000);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Sending Invoice...");
+      //callback();
+      resolve();
+    }, 2000);
+  });
 }
 
 function main() {
@@ -285,10 +291,7 @@ function main() {
   //   });
   // });
 
-  checkInventory().then(() => {
-    console.log("inventory checked");
-    createOrder();
-  }); // new example of callback hell
+  checkInventory().then(createOrder).then(chargePayment).then(sendInvoice);
 
   console.log("other request processing...");
 }
