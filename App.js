@@ -327,8 +327,9 @@ function checkInventory(callback) {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("Checking Inventory...");
-      reject(new Error("Inventory check failed!"));
-    }, 4000);
+      //reject(new Error("Inventory check failed!"));
+      resolve();
+    }, 2000);
   });
   return promise;
 }
@@ -337,8 +338,9 @@ function createOrder(callback) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("Creating Order...");
-      reject(new Error("Order creation failed!"));
-    }, 3000);
+      resolve();
+      // reject(new Error("Order creation failed!"));
+    }, 5000);
   });
 }
 
@@ -356,28 +358,22 @@ function sendInvoice(callback) {
     setTimeout(() => {
       console.log("Sending Invoice...");
       resolve();
-    }, 2000);
+    }, 3000);
   });
 }
 
-function main() {
-  checkInventory()
-    .catch((err) => {
-      console.log("err", err);
-    })
-    .then(createOrder)
-    .catch((err) => {
-      console.log("err", err);
-    })
-    .then(chargePayment)
-    .catch((err) => {
-      console.log("err", err);
-    })
-    .then(sendInvoice)
-    .catch((err) => {
-      console.log("err", err);
-    });
-
-  console.log("other request processing...");
+async function main() {
+  setTimeout(() => {
+    console.log("other request processing...");
+  }, 3000);
+  await checkInventory();
+  await createOrder();
+  await chargePayment();
+  await sendInvoice();
 }
 main();
+
+// logic behind async await is function looks like sync code but works as async code
+// main benefit of async await is main thread is not blocked
+// so other code/function/process can execude freely because thread is free
+// await makes the function pause/wait until the promise is resolved
