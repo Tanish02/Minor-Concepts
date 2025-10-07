@@ -328,9 +328,9 @@ function checkInventory(callback) {
     setTimeout(() => {
       console.log("Checking Inventory...");
       // passing Data
-      let inStock = 4;
-      //reject(new Error("Inventory check failed!"));
-      resolve(inStock);
+      //let inStock = 4;
+      reject(new Error("Inventory check failed!"));
+      //resolve(inStock);
     }, 2000);
   });
   return promise;
@@ -368,11 +368,15 @@ async function main() {
   setTimeout(() => {
     console.log("other request processing...");
   }, 3000);
-  const inStock = await checkInventory();
-  console.log("inStock:", inStock);
-  await createOrder();
-  await chargePayment();
-  await sendInvoice();
+  try {
+    await checkInventory();
+
+    await createOrder();
+    await chargePayment();
+    await sendInvoice();
+  } catch (err) {
+    console.log("Err", err);
+  }
 }
 main();
 
@@ -381,4 +385,5 @@ main();
 // so other code/function/process can execude freely because thread is free
 // await makes the function pause/wait until the promise is resolved
 // if Data is passed from the promise we do it through .resolve(data);
-//
+// for handling error we use try catch block
+// and for handling multiple error we use multiple try catch block
