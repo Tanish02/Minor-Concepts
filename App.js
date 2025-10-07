@@ -225,29 +225,32 @@
 function checkInventory(callback) {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log("Checking Inventory --->");
+      console.log("Checking Inventory...");
       // callback();
       resolve(); // --> when everything goes well and we get the response
       // reject(); //  --> when there is an error and we dont get the response
-    }, 1000);
+    }, 4000);
   });
   return promise;
 }
 
 function createOrder(callback) {
-  setTimeout(() => {
-    console.log("Creating Order --->");
-    // error handling
-    // simulate an error
-    // and return because of the error appears here
-    const error = new Error("Order creation failed");
-    callback(error);
-  }, 3000);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Creating Order...");
+      // error handling
+      // simulate an error
+      // and return because of the error appears here
+      //const error = new Error("Order creation failed");
+      // callback(error);
+      resolve();
+    }, 3000);
+  });
 }
 
 function chargePayment(callback) {
   setTimeout(() => {
-    console.log("Charging Payment--->");
+    console.log("Charging Payment...");
     let error = null;
     const chargedAmount = 100;
     callback(error, chargedAmount);
@@ -256,7 +259,7 @@ function chargePayment(callback) {
 
 function sendInvoice(callback) {
   setTimeout(() => {
-    console.log("Sending Invoice --->");
+    console.log("Sending Invoice...");
     callback();
   }, 2000);
 }
@@ -282,7 +285,11 @@ function main() {
   //   });
   // });
 
-  checkInventory();
+  checkInventory().then(() => {
+    console.log("inventory checked");
+    createOrder();
+  }); // new example of callback hell
+
   console.log("other request processing...");
 }
 main();
