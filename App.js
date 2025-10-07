@@ -370,9 +370,20 @@ async function main() {
   }, 3000);
   try {
     await checkInventory();
-
+  } catch (err) {
+    console.log("Err", err);
+  }
+  try {
     await createOrder();
+  } catch (err) {
+    console.log("Err", err);
+  }
+  try {
     await chargePayment();
+  } catch (err) {
+    console.log("Err", err);
+  }
+  try {
     await sendInvoice();
   } catch (err) {
     console.log("Err", err);
