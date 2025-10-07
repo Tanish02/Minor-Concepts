@@ -149,11 +149,89 @@
 // which makes the code hard to read and maintain
 // it looks like a pyramid of doom
 // to avoid callback hell we can use promises and async/await
+//
+///
+///
+///
+///
+// function checkInventory(callback) {
+//   setTimeout(() => {
+//     console.log("Checking Inventory --->");
+//     callback();
+//   }, 1000);
+// }
+
+// function createOrder(callback) {
+//   setTimeout(() => {
+//     console.log("Creating Order --->");
+//     // error handling
+//     // simulate an error
+//     // and return because of the error appears here
+//     const error = new Error("Order creation failed");
+//     callback(error);
+//   }, 3000);
+// }
+
+// function chargePayment(callback) {
+//   setTimeout(() => {
+//     console.log("Charging Payment--->");
+//     let error = null;
+//     const chargedAmount = 100;
+//     callback(error, chargedAmount);
+//   }, 5000);
+// }
+
+// function sendInvoice(callback) {
+//   setTimeout(() => {
+//     console.log("Sending Invoice --->");
+//     callback();
+//   }, 2000);
+// }
+
+// function main() {
+//   // callback hell -- callbacks inside callbacks --> solution Promises
+//   checkInventory(() => {
+//     createOrder((error) => {
+//       if (error) {
+//         console.log(error);
+//       }
+//       chargePayment((err, chargedAmount) => {
+//         if (err) {
+//           console.log("handling payment error--->");
+//           return;
+//         }
+
+//         console.log("charged:", chargedAmount);
+//         sendInvoice(() => {
+//           console.log("ALL DONE!");
+//         });
+//       });
+//     });
+//   });
+//   console.log("other request processing...");
+// }
+// main();
+//
+///
+///
+///
+///
+////
+///
+// Promises --> is a feature/class in JS that helps to avoid callback hell
+//it used in cases when we dont know in advance when the response will come
+// it represents a value that may be available now, or in the future, or never
+// in promise we have two functions resolve and reject
 function checkInventory(callback) {
-  setTimeout(() => {
-    console.log("Checking Inventory --->");
-    callback();
-  }, 1000);
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Checking Inventory --->");
+      // callback();
+      resolve(); // --> when everything goes well and we get the response
+      // reject(); //  --> when there is an error and we dont get the response
+    }, 1000);
+  });
+  return promise;
 }
 
 function createOrder(callback) {
@@ -185,24 +263,26 @@ function sendInvoice(callback) {
 
 function main() {
   // callback hell -- callbacks inside callbacks --> solution Promises
-  checkInventory(() => {
-    createOrder((error) => {
-      if (error) {
-        console.log(error);
-      }
-      chargePayment((err, chargedAmount) => {
-        if (err) {
-          console.log("handling payment error--->");
-          return;
-        }
+  // checkInventory(() => {
+  //   createOrder((error) => {
+  //     if (error) {
+  //       console.log(error);
+  //     }
+  //     chargePayment((err, chargedAmount) => {
+  //       if (err) {
+  //         console.log("handling payment error--->");
+  //         return;
+  //       }
 
-        console.log("charged:", chargedAmount);
-        sendInvoice(() => {
-          console.log("ALL DONE!");
-        });
-      });
-    });
-  });
+  //       console.log("charged:", chargedAmount);
+  //       sendInvoice(() => {
+  //         console.log("ALL DONE!");
+  //       });
+  //     });
+  //   });
+  // });
+
+  checkInventory();
   console.log("other request processing...");
 }
 main();
