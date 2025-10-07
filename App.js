@@ -184,7 +184,7 @@ function sendInvoice(callback) {
 }
 
 function main() {
-  // callback hell -- callbacks inside callbacks
+  // callback hell -- callbacks inside callbacks --> solution Promises
   checkInventory(() => {
     createOrder((error) => {
       if (error) {
