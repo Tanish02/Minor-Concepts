@@ -37,7 +37,7 @@ import React, { useState } from "react";
 function App() {
   const [count, setCount] = useState(0);
   const [theme, setTheme] = useState("Dark");
-  const [name, setName] = useState("Tanish");
+  const [name, setName] = useState("");
 
   // Event Handler
   const handleIncrement = () => {
@@ -94,7 +94,7 @@ function App() {
             cursor: "pointer",
           }}
         >
-          Theme
+          🌙
         </button>
       </div>
       <div style={{ margin: "20px" }}>
