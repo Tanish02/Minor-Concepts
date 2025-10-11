@@ -34,91 +34,94 @@ import React, { useState } from "react";
 
 // // end code
 
-function App() {
-  const [count, setCount] = useState(0);
-  const [theme, setTheme] = useState("Dark");
-  const [name, setName] = useState("");
+// // multiple states in a single component and theme toggle and input field
+// function App() {
+//   const [count, setCount] = useState(0);
+//   const [theme, setTheme] = useState("Dark");
+//   const [name, setName] = useState("");
 
-  // Event Handler
-  const handleIncrement = () => {
-    setCount(count + 1);
-  };
+//   // Event Handler
+//   const handleIncrement = () => {
+//     setCount(count + 1);
+//   };
 
-  const handleToggleTheme = () => {
-    setTheme(theme === "Dark" ? "Light" : "Dark");
-  };
+//   const handleToggleTheme = () => {
+//     setTheme(theme === "Dark" ? "Light" : "Dark");
+//   };
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
+//   const handleNameChange = (e) => {
+//     setName(e.target.value);
+//   };
 
-  // Dynamic styles based on theme
-  const appStyle = {
-    textAlign: "ceneter",
-    marginTop: "50px",
-    backgroundColor: theme === "Light" ? "#f9f9f9" : "#333",
-    color: theme === "Light" ? "#000" : "#fff",
-    height: "100vh",
-    transition: "all 0.3s ease",
-    padding: "20px",
-  };
+//   // Dynamic styles based on theme
+//   const appStyle = {
+//     textAlign: "ceneter",
+//     marginTop: "50px",
+//     backgroundColor: theme === "Light" ? "#f9f9f9" : "#333",
+//     color: theme === "Light" ? "#000" : "#fff",
+//     height: "100vh",
+//     transition: "all 0.3s ease",
+//     padding: "20px",
+//   };
 
-  // Return JSX
+//   // Return JSX
 
-  return (
-    <div style={appStyle}>
-      <h1>React useState (Multiple-States)</h1>
+//   return (
+//     <div style={appStyle}>
+//       <h1>React useState (Multiple-States)</h1>
 
-      <div style={{ margin: "20px" }}>
-        <p style={{ fontSize: "24px" }}>Count: {count}</p>
-        <button
-          onClick={handleIncrement}
-          style={{
-            fontSize: "18px",
-            padding: "10px 20px",
-            cursor: "pointer",
-            borderRadius: "10px",
-          }}
-        >
-          +1
-        </button>
-      </div>
-      <div style={{ margin: "20px" }}>
-        <p>Current Theme: {theme}</p>
-        <button
-          onClick={handleToggleTheme}
-          style={{
-            fontSize: "16px",
-            padding: "8px 20px",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
-        >
-          🌙
-        </button>
-      </div>
-      <div style={{ margin: "20px" }}>
-        <input
-          type="text"
-          placeholder="Enter U'r Name"
-          value={name}
-          onChange={handleNameChange}
-          style={{
-            padding: "10px",
-            fontSize: "16px",
-            borderRadius: "8px",
-            border: "1px solid #ccc",
-            outline: "none",
-          }}
-        />
-        <p style={{ fontSize: "18px", marginTop: "10px" }}>
-          Hello, {name || "Stranger"}! 👍
-        </p>
-      </div>
-    </div>
-  );
-}
+//       <div style={{ margin: "20px" }}>
+//         <p style={{ fontSize: "24px" }}>Count: {count}</p>
+//         <button
+//           onClick={handleIncrement}
+//           style={{
+//             fontSize: "18px",
+//             padding: "10px 20px",
+//             cursor: "pointer",
+//             borderRadius: "10px",
+//           }}
+//         >
+//           +1
+//         </button>
+//       </div>
+//       <div style={{ margin: "20px" }}>
+//         <p>Current Theme: {theme}</p>
+//         <button
+//           onClick={handleToggleTheme}
+//           style={{
+//             fontSize: "16px",
+//             padding: "8px 20px",
+//             borderRadius: "8px",
+//             cursor: "pointer",
+//           }}
+//         >
+//           🌙
+//         </button>
+//       </div>
+//       <div style={{ margin: "20px" }}>
+//         <input
+//           type="text"
+//           placeholder="Enter U'r Name"
+//           value={name}
+//           onChange={handleNameChange}
+//           style={{
+//             padding: "10px",
+//             fontSize: "16px",
+//             borderRadius: "8px",
+//             border: "1px solid #ccc",
+//             outline: "none",
+//           }}
+//         />
+//         <p style={{ fontSize: "18px", marginTop: "10px" }}>
+//           Hello, {name || "Stranger"}! 👍
+//         </p>
+//       </div>
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
 
-// end code
+// // end code
+
+// useState with an Object (Profile Form)
