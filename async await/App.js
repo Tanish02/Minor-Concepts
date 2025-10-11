@@ -218,94 +218,95 @@
 // in promise we have two functions resolve and reject
 // promise have 3 state --> pending, resolve/fullfiled=execution ok, reject=error, .catch=for error handling
 
-function checkInventory(callback) {
-  const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log("Checking Inventory...");
-      // callback();
-      // resolve(); // --> when everything goes well and we get the response
-      reject(new Error("Inventory check failed!")); // --> when error popsup and we dont get the response
-    }, 4000);
-  });
-  return promise;
-}
-function createOrder(callback) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log("Creating Order...");
-      // error handling
-      // simulate an error
-      // and return because of the error appears here
-      //const error = new Error("Order creation failed");
-      // callback(error);
-      // resolve();
-      reject(new Error("Order creation failed!"));
-    }, 3000);
-  });
-}
-function chargePayment(callback) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log("Charging Payment...");
-      //let error = null;
-      //const chargedAmount = 100;
-      //callback(error, chargedAmount);
-      resolve();
-    }, 5000);
-  });
-}
+// function checkInventory(callback) {
+//   const promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log("Checking Inventory...");
+//       // callback();
+//       // resolve(); // --> when everything goes well and we get the response
+//       reject(new Error("Inventory check failed!")); // --> when error popsup and we dont get the response
+//     }, 4000);
+//   });
+//   return promise;
+// }
+// function createOrder(callback) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log("Creating Order...");
+//       // error handling
+//       // simulate an error
+//       // and return because of the error appears here
+//       //const error = new Error("Order creation failed");
+//       // callback(error);
+//       // resolve();
+//       reject(new Error("Order creation failed!"));
+//     }, 3000);
+//   });
+// }
+// function chargePayment(callback) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log("Charging Payment...");
+//       //let error = null;
+//       //const chargedAmount = 100;
+//       //callback(error, chargedAmount);
+//       resolve();
+//     }, 5000);
+//   });
+// }
 
-function sendInvoice(callback) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log("Sending Invoice...");
-      //callback();
-      resolve();
-    }, 2000);
-  });
-}
+// function sendInvoice(callback) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log("Sending Invoice...");
+//       //callback();
+//       resolve();
+//     }, 2000);
+//   });
+// }
 
-function main() {
-  checkInventory(() => {
-    createOrder((error) => {
-      if (error) {
-        console.log(error);
-      }
-      chargePayment((err, chargedAmount) => {
-        if (err) {
-          console.log("handling payment error--->");
-          return;
-        }
+// function main() {
+//   // callback hell -- callbacks inside callbacks --> solution Promises
+//   // checkInventory(() => {
+//   //   createOrder((error) => {
+//   //     if (error) {
+//   //       console.log(error);
+//   //     }
+//   //     chargePayment((err, chargedAmount) => {
+//   //       if (err) {
+//   //         console.log("handling payment error--->");
+//   //         return;
+//   //       }
 
-        console.log("charged:", chargedAmount);
-        sendInvoice(() => {
-          console.log("ALL DONE!");
-        });
-      });
-    });
-  });
-  //   //
-  //   // promise chaining / .catch chaing --> solution use async await
-  checkInventory()
-    .catch((err) => {
-      console.log("err", err);
-    })
-    .then(createOrder)
-    .catch((err) => {
-      console.log("err", err);
-    })
-    .then(chargePayment)
-    .catch((err) => {
-      console.log("err", err);
-    })
-    .then(sendInvoice)
-    .catch((err) => {
-      console.log("err", err);
-    });
+//   //       console.log("charged:", chargedAmount);
+//   //       sendInvoice(() => {
+//   //         console.log("ALL DONE!");
+//   //       });
+//   //     });
+//   //   });
+//   // });
+//   //
+//   // promise chaining / .catch chaing --> solution use async await
+//   checkInventory()
+//     .catch((err) => {
+//       console.log("err", err);
+//     })
+//     .then(createOrder)
+//     .catch((err) => {
+//       console.log("err", err);
+//     })
+//     .then(chargePayment)
+//     .catch((err) => {
+//       console.log("err", err);
+//     })
+//     .then(sendInvoice)
+//     .catch((err) => {
+//       console.log("err", err);
+//     });
 
-  console.log("other request processing...");
-}
-main();
+//   console.log("other request processing...");
+// }
+// main();
 
 //
 //
@@ -327,7 +328,6 @@ function checkInventory(callback) {
   });
   return promise;
 }
-
 function createOrder(callback) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -337,7 +337,6 @@ function createOrder(callback) {
     }, 5000);
   });
 }
-
 function chargePayment(callback) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -346,7 +345,6 @@ function chargePayment(callback) {
     }, 5000);
   });
 }
-
 function sendInvoice(callback) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -355,7 +353,6 @@ function sendInvoice(callback) {
     }, 3000);
   });
 }
-
 async function main() {
   setTimeout(() => {
     console.log("other request processing...");
