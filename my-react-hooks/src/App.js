@@ -125,3 +125,120 @@ import React, { useState } from "react";
 // // end code
 
 // useState with an Object (Profile Form)
+
+function App() {
+  //single object to hold multiple state
+  const [user, setUser] = useState({
+    name: "",
+    age: "",
+    email: "",
+  });
+
+  // handle input change dynamically
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // update (only 1 property) while keeping other unchanged
+    setUser((prevUser) => ({
+      ...prevUser, // copy all previous value
+      [name]: value, // overwrite just changed one
+    }));
+  };
+
+  // Form Reset
+  const handleReset = () => {
+    setUser({
+      name: "",
+      age: "",
+      email: "",
+    });
+  };
+
+  return (
+    <div
+      style={{
+        textAlign: "center",
+        marginTop: "40px",
+        fontFamily: "sans-serif",
+      }}
+    >
+      <h1> React useState with Object </h1>
+
+      {/*Name Field*/}
+
+      <div style={{ margin: "10px" }}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter u'r Name"
+          value={user.name}
+          onChange={handleChange}
+          style={{ padding: "10px", borderRadius: "8px" }}
+        />
+      </div>
+
+      {/*Age Field*/}
+      <div style={{ margin: "10px" }}>
+        <input
+          type="number"
+          name="age"
+          placeholder="Enter U'r Age"
+          value={user.age}
+          onChange={handleChange}
+          style={{ padding: "10px", borderRadius: "8px" }}
+        />
+      </div>
+
+      {/*Email Field*/}
+      <div style={{ margin: "10px" }}>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter U'r E-mail"
+          value={user.email}
+          onChange={handleChange}
+          style={{ padding: "10px", borderRadius: "8px" }}
+        />
+      </div>
+
+      {/*Reset Button*/}
+      <button
+        onClick={handleReset}
+        style={{
+          margin: "20px",
+          padding: "10px 20px",
+          borderRadius: "8px",
+          cursor: "pointer",
+        }}
+      >
+        Reset
+      </button>
+
+      {/*Display user Info*/}
+      <div
+        style={{
+          marginTop: "30px",
+          backgroundColor: "#f0f0f0",
+          padding: "20px",
+          boarderRadius: "10px",
+          display: "inline-block",
+        }}
+      >
+        <h2>User Info</h2>
+        <p>
+          <strong>Name:</strong> {user.name || "N/A"}{" "}
+        </p>
+        <p>
+          <strong>Age:</strong> {user.age || "N/A"}{" "}
+        </p>
+        <p>
+          <strong>Email:</strong> {user.email || "N/A"}{" "}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+// end code
