@@ -1,21 +1,18 @@
 import React, { useState } from "react";
 
-// // count incrase by 1 program
+/* Count incrase by 1 program
+============================
 
 
 
+// function App() {
+//   const [count, setCount] = useState(0);
+//   //inital value 0
 
-
-
-
-// // function App() {
-// //   const [count, setCount] = useState(0);
-// //   //inital value 0
-
-// //   // function to update the count
-// //   const handleIncrement = () => {
-// //     setCount(count + 1);
-// //   };
+//   // function to update the count
+//   const handleIncrement = () => {
+//     setCount(count + 1);
+//   };
 
 //   return (
 //     <div style={{ textAlign: "center", marginTop: "50px" }}>
@@ -36,11 +33,16 @@ import React, { useState } from "react";
 //   );
 // }
 
-// // export default App;
+//  export default App;
 
-// // // end code
+// //// end code
+*/
 
-// // // multiple states in a single component and theme toggle and input field
+
+/* multiple states in a single component and theme toggle and input field
+============================
+
+
 // // function App() {
 // //   const [count, setCount] = useState(0);
 // //   const [theme, setTheme] = useState("Dark");
@@ -130,7 +132,10 @@ import React, { useState } from "react";
 
 // // // end code
 
-// // useState with an Object (Profile Form)
+*/
+
+/* useState with an Object (Profile Form)
+==========================================
 
 // function App() {
 //   //single object to hold multiple state
@@ -170,7 +175,7 @@ import React, { useState } from "react";
 //     >
 //       <h1> React useState with Object </h1>
 
-//       {/*Name Field*/}
+//       // Name Field
 
 //       <div style={{ margin: "10px" }}>
 //         <input
@@ -183,7 +188,7 @@ import React, { useState } from "react";
 //         />
 //       </div>
 
-//       {/*Age Field*/}
+//       //Age Field
 //       <div style={{ margin: "10px" }}>
 //         <input
 //           type="number"
@@ -195,7 +200,7 @@ import React, { useState } from "react";
 //         />
 //       </div>
 
-//       {/*Email Field*/}
+//       // Email Field
 //       <div style={{ margin: "10px" }}>
 //         <input
 //           type="email"
@@ -207,7 +212,7 @@ import React, { useState } from "react";
 //         />
 //       </div>
 
-//       {/*Reset Button*/}
+//       //Reset Button
 //       <button
 //         onClick={handleReset}
 //         style={{
@@ -220,7 +225,7 @@ import React, { useState } from "react";
 //         Reset
 //       </button>
 
-//       {/*Display user Info*/}
+//       //Display user Info
 //       <div
 //         style={{
 //           marginTop: "30px",
@@ -249,10 +254,15 @@ import React, { useState } from "react";
 
 // // end code
 
-//////////////////////
- 
+*/
 
 
-// 
-// // Functional updates with useState
+
+
+/* Functional updates with useState
 // // Goal: Avoid stale state when updates depend on previous value.
+===================================================================
+
+//// end code 
+
+*/
